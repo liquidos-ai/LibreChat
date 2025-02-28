@@ -1,0 +1,75 @@
+# Configuration version (required)
+version: 1.2.1
+
+# Cache settings: Set to true to enable caching
+cache: true
+
+# Custom interface configuration
+interface:
+  customWelcome: "Welcome to LiquidOS!"
+  logoURL: "https://liquidos.ai/_astro/Union.CW4seVlb.png"
+  # Privacy policy settings
+  privacyPolicy:
+    externalUrl: "https://liquidos.ai/privacy-policy"
+    openNewTab: true
+
+  # Terms of service
+  termsOfService:
+    externalUrl: "https://liquidos.ai"
+    openNewTab: true
+    modalAcceptance: true
+    modalTitle: "Terms of Service for LiquidOS"
+    modalContent: |
+      # Terms and Conditions for LiquidOS
+
+  endpointsMenu: true
+  modelSelect: false
+  parameters: false
+  sidePanel: false
+  presets: true
+  prompts: false
+  bookmarks: false
+  multiConvo: false
+  agents: false
+
+endpoints:
+  custom:
+    - name: "Ollama"
+      apiKey: "ollama"
+      # use 'host.docker.internal' instead of localhost if running LibreChat in a docker container
+      baseURL: "http://localhost:11434/v1/chat/completions"
+      stream: false
+      models:
+        default:
+          [
+            "llama2",
+            "mistral",
+            "codellama",
+            "dolphin-mixtral",
+            "mistral-openorca",
+          ]
+        # fetching list of models is supported but the `name` field must start
+        # with `ollama` (case-insensitive), as it does in this example.
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: false
+      summaryModel: "current_model"
+      forcePrompt: false
+      modelDisplayLabel: "Ollama"
+    - name: "AutoAgent"
+      apiKey: "test"
+      # use 'host.docker.internal' instead of localhost if running LibreChat in a docker container
+      baseURL: "http://localhost:8080/v1/chat/completions"
+      models:
+        default: ["AG-1"]
+        # fetching list of models is supported but the `name` field must start
+        # with `ollama` (case-insensitive), as it does in this example.
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: false
+      summaryModel: "current_model"
+      forcePrompt: false
+      modelDisplayLabel: "AutoAgent"
+      iconURL: "https://liquidos.ai/_astro/Union.CW4seVlb.png"
